@@ -2,124 +2,847 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ahmed Elsayed Mohamed | Senior Motor Development Engineer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <title>Ahmed Elsayed Mohamed - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 50px rgba(0,0,0,0.3);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background: #2d3748;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            transition: background 0.3s;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background: #4a5568;
+        }
+
+        /* Main Content */
+        .content {
+            padding: 3rem 2rem;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* CV Section */
+        .cv-section {
+            margin-bottom: 3rem;
+        }
+
+        .cv-section h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .cv-section h3 {
+            color: #2d3748;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #f7fafc;
+            border-radius: 8px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .job-entry {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f7fafc;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-weight: bold;
+            color: #2d3748;
+            font-size: 1.2rem;
+        }
+
+        .job-date {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .job-entry ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .job-entry li {
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-category {
+            background: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-top: 3px solid #667eea;
+        }
+
+        .skill-category h4 {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects Section */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Articles Section */
+        .article-list {
+            margin-top: 2rem;
+        }
+
+        .article-item {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .article-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+
+        .article-item h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-meta {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Project Detail Pages */
+        .project-detail {
+            display: none;
+            padding: 3rem 2rem;
+            animation: fadeIn 0.5s;
+        }
+
+        .back-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: #5568d3;
+        }
+
+        .project-detail h1 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        .project-detail h2 {
+            color: #2d3748;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            padding: 1rem;
+            background: #f7fafc;
+            border-radius: 8px;
+        }
+
+        .project-meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-meta-item strong {
+            color: #667eea;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .project-image-placeholder {
+            background: #e2e8f0;
+            border-radius: 8px;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #718096;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .job-header {
+                flex-direction: column;
+            }
+
+            .content {
+                padding: 2rem 1rem;
+            }
+
+            .project-detail {
+                padding: 2rem 1rem;
+            }
+
+            .project-detail h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>Ahmed Elsayed Mohamed</h1>
+            <p class="subtitle">Senior Motor Development Engineer</p>
+        </header>
 
-<div class="container">
+        <nav>
+            <ul>
+                <li><a href="#cv" class="nav-link active" onclick="showTab('cv')">CV</a></li>
+                <li><a href="#work" class="nav-link" onclick="showTab('work')">Work & Projects</a></li>
+                <li><a href="#articles" class="nav-link" onclick="showTab('articles')">Articles</a></li>
+            </ul>
+        </nav>
 
-<header>
-    <h1>Ahmed Elsayed Mohamed</h1>
-    <h2>Senior Motor Development Engineer</h2>
-    <p>
-        📞 +201015760867 |
-        ✉ <a href="mailto:Aelsay96@gmail.com">Aelsay96@gmail.com</a> |
-        📍 Menofiya, Egypt
-    </p>
-</header>
+        <div class="content">
+            <!-- CV Tab -->
+            <div id="cv" class="tab-content active">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>📞</strong> +201015760867
+                    </div>
+                    <div class="contact-item">
+                        <strong>📧</strong> <a href="mailto:Aelsay96@gmail.com">Aelsay96@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📍</strong> Menofiya, Egypt
+                    </div>
+                </div>
 
-<section>
-    <h3>Summary</h3>
-    <p>
-        Electrical Motor Engineer with 5+ years of experience in Finite Element Analysis (FEA),
-        motor design optimization, and Python automation. Skilled in ANSYS Maxwell, JMAG,
-        and MATLAB. Currently pursuing a Master’s degree in Power Electronics Engineering,
-        focusing on EV drive systems.
-    </p>
-</section>
+                <div class="cv-section">
+                    <h2>Professional Summary</h2>
+                    <p>Electrical Motor Engineer with 5+ years of expertise in Finite Element Analysis (FEA), motor design optimization, and Python automation. Proficient in ANSYS Maxwell, JMAG, and MATLAB. Currently pursuing a Master's in Power Electronics Engineering, specializing in electric vehicle (EV) drive systems.</p>
+                </div>
 
-<section>
-    <h3>Core Competencies</h3>
-    <ul class="skills">
-        <li>Finite Element Analysis (FEA)</li>
-        <li>Home Appliance Motor Design</li>
-        <li>ANSYS Automation (PyAEDT, OptiSLang)</li>
-        <li>Python & MATLAB Scripting</li>
-        <li>Motor Testing & Validation</li>
-        <li>Project Management</li>
-        <li>Cross-Functional Collaboration</li>
-    </ul>
-</section>
+                <div class="cv-section">
+                    <h2>Core Competencies</h2>
+                    <p>Finite Element Analysis (FEA), Home Appliance Motor Design (Analytical Design / CAD), ANSYS Automation (PyAEDT / OptiSLang), Python/MATLAB Scripting, Motor Testing, Project Management, Cross-Functional Team Collaboration</p>
+                </div>
 
-<section>
-    <h3>Work Experience</h3>
+                <div class="cv-section">
+                    <h2>Work Experience</h2>
+                    
+                    <div class="job-entry">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Senior Motor Design Engineer</div>
+                                <div>El-Araby Group R&D center, Egypt</div>
+                            </div>
+                            <div class="job-date">Jan 2024 – Present</div>
+                        </div>
+                        <ul>
+                            <li>Design, optimize, prototype, and test home appliance motors.</li>
+                            <li>Conduct simulation testing and validation to ensure compliance with system performance requirements.</li>
+                            <li>Perform topology optimization for efficient lamination design and cost reduction.</li>
+                            <li>Continuously improve simulation methodologies to enhance accuracy and reduce time.</li>
+                        </ul>
+                    </div>
 
-    <div class="job">
-        <h4>El-Araby Group – R&D Center, Egypt</h4>
-        <strong>Senior Motor Design Engineer</strong>
-        <span class="date">Jan 2024 – Present</span>
-        <ul>
-            <li>Design, optimize, prototype, and test home appliance motors.</li>
-            <li>Perform simulation-based validation against system requirements.</li>
-            <li>Conduct topology optimization for lamination efficiency and cost reduction.</li>
-            <li>Improve simulation workflows to increase accuracy and reduce lead time.</li>
-        </ul>
+                    <div class="job-entry">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Motor Design Engineer</div>
+                                <div>El-Araby Group R&D center, Egypt</div>
+                            </div>
+                            <div class="job-date">Jan 2020 – Jan 2024</div>
+                        </div>
+                        <ul>
+                            <li>Optimized 15+ home appliance motors (SPIM), improving efficiency by up to 15% and reducing costs by up to 30%.</li>
+                            <li>Automated 2D/3D ANSYS simulations using Python (PyAEDT), reducing model construction time and errors by 90%.</li>
+                            <li>Designed and built an Epstein Frame Jig for steel performance data extraction in compliance with IEC 60404-2.</li>
+                            <li>Localized 9 SPIM motors, supported alternative material/component approvals.</li>
+                            <li>Conducted benchmarking activities, reverse engineering, and cost-performance analysis.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cv-section">
+                    <h2>Education</h2>
+                    
+                    <div class="job-entry">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Master of Power Electronics Engineering</div>
+                                <div>Cairo University, Egypt</div>
+                            </div>
+                            <div class="job-date">Oct 2022 – Present</div>
+                        </div>
+                        <p><strong>Thesis:</strong> "EV SiC-Based Multilevel Inverter"</p>
+                        <p><strong>Areas of Interest:</strong> Multilevel Inverters, Wide Bandgap Devices, CMV Mitigation, High Power Density</p>
+                    </div>
+
+                    <div class="job-entry">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Bachelor of Electric Machines & Power Systems</div>
+                                <div>Minufiya University, Egypt</div>
+                            </div>
+                            <div class="job-date">Sep 2014 – Jun 2019</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cv-section">
+                    <h2>Technical Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Simulation Tools</h4>
+                            <p>ANSYS Maxwell, Motor-CAD, JMAG, FEMM</p>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Programming</h4>
+                            <p>Python (PyAEDT, PyFemm), MATLAB/Simulink</p>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Motor Testing</h4>
+                            <p>Dynamometers, Power Analyzers, Oscilloscopes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Work & Projects Tab -->
+            <div id="work" class="tab-content">
+                <div class="cv-section">
+                    <h2>Featured Projects</h2>
+                    <div class="project-grid">
+                        <div class="project-card" onclick="openProject('ltspice-project')">
+                            <h3>LTSpiceHandler</h3>
+                            <p><strong>Cairo University</strong></p>
+                            <p>Developed an automated optimization tool for predefined inverter topologies, enabling PWM techniques, result analysis, and accurate loss calculation according to IEC 60747-8.</p>
+                            <div>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">MATLAB</span>
+                                <span class="project-tag">LTSpice</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card" onclick="openProject('dpt-project')">
+                            <h3>DPTHandler</h3>
+                            <p><strong>Cairo University</strong></p>
+                            <p>Automated double-pulse testing (DPT) for MOSFETs using LTspice, allowing comparison of results with defined datasheet curves.</p>
+                            <div>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">LTSpice</span>
+                                <span class="project-tag">Testing</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card" onclick="openProject('spim-project')">
+                            <h3>SPIM Manufacturing Localization</h3>
+                            <p><strong>El-Araby Group</strong></p>
+                            <p>Led a cross-functional team to localize nine single-phase induction motors (SPIM), reducing annual import costs significantly.</p>
+                            <div>
+                                <span class="project-tag">Project Management</span>
+                                <span class="project-tag">Motor Design</span>
+                                <span class="project-tag">Cost Optimization</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card" onclick="openProject('sample-project')">
+                            <h3>Project Title</h3>
+                            <p><strong>Organization/Company</strong></p>
+                            <p>Project description goes here. Add details about what you built, the technologies used, and the impact it had.</p>
+                            <div>
+                                <span class="project-tag">Tag 1</span>
+                                <span class="project-tag">Tag 2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Articles Tab -->
+            <div id="articles" class="tab-content">
+                <div class="cv-section">
+                    <h2>Technical Articles & Blog Posts</h2>
+                    <div class="article-list">
+                        <div class="article-item">
+                            <h3>Article Title Goes Here</h3>
+                            <div class="article-meta">Published on Month Day, Year • 5 min read</div>
+                            <p>Brief description or excerpt of the article. This should give readers an idea of what the article is about and entice them to read more.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+
+                        <div class="article-item">
+                            <h3>Another Article Title</h3>
+                            <div class="article-meta">Published on Month Day, Year • 8 min read</div>
+                            <p>Brief description or excerpt of the article. This should give readers an idea of what the article is about and entice them to read more.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+
+                        <div class="article-item">
+                            <h3>Third Article Title</h3>
+                            <div class="article-meta">Published on Month Day, Year • 6 min read</div>
+                            <p>Brief description or excerpt of the article. This should give readers an idea of what the article is about and entice them to read more.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Ahmed Elsayed Mohamed. All rights reserved.</p>
+        </footer>
+
+        <!-- Project Detail Pages -->
+        <!-- LTSpiceHandler Project -->
+        <div id="ltspice-project" class="project-detail">
+            <button class="back-button" onclick="closeProject()">← Back to Projects</button>
+            
+            <h1>LTSpiceHandler</h1>
+            
+            <div class="project-meta">
+                <div class="project-meta-item">
+                    <strong>Organization</strong>
+                    <span>Cairo University</span>
+                </div>
+                <div class="project-meta-item">
+                    <strong>Duration</strong>
+                    <span>Add project duration</span>
+                </div>
+                <div class="project-meta-item">
+                    <strong>Role</strong>
+                    <span>Lead Developer</span>
+                </div>
+                <div class="project-meta-item">
+                    <strong>Technologies</strong>
+                    <span>Python, MATLAB, LTSpice</span>
+                </div>
+            </div>
+
+            <h2>Overview</h2>
+            <p>Developed an automated optimization tool for predefined inverter topologies, enabling PWM techniques, result analysis, and accurate loss calculation according to IEC 60747-8 standards. This tool significantly reduces the time required for inverter design optimization and ensures compliance with international standards.</p>
+
+            <h2>Key Features</h2>
+            <ul>
+                <li>Automated inverter topology optimization</li>
+                <li>Multiple PWM technique implementations</li>
+                <li>Comprehensive result analysis and visualization</li>
+                <li>IEC 60747-8 compliant loss calculations</li>
+                <li>Integration with LTSpice simulation environment</li>
+            </ul>
+
+            <h2>Technical Challenges</h2>
+            <p>Add details about the technical challenges you faced and how you overcame them.</p>
+
+            <h2>Results & Impact</h2>
+            <p>Add measurable results and the impact this project had on research or development processes.</p>
+
+            <h2>Project Images</h2>
+            <div class="project-images">
+                <div class="project-image-placeholder">Screenshot 1</div>
+                <div class="project-image-placeholder">Screenshot 2</div>
+                <div class="project-image-placeholder">Diagram/Chart</div>
+            </div>
+        </div>
+
+        <!-- DPTHandler Project -->
+        <div id="dpt-project" class="project-detail">
+            <button class="back-button" onclick="closeProject()">← Back to Projects</button>
+            
+            <h1>DPTHandler</h1>
+            
+            <div class="project-meta">
+                <div class="project-meta-item">
+                    <strong>Organization</strong>
+                    <span>Cairo University</span>
+                </div>
+                <div class="project-meta-item">
+                    <strong>Duration</strong>
+                    <span>Add project duration</span>
+                </div>
+                <div class="project-meta-item">
+                    <strong>Role</strong>
+                    <span>Lead Developer</span>
+                </div>
+                <div class="project-meta-item">
+                    <strong>Technologies</strong>
+                    <span>Python, LTSpice</span>
+                </div>
+            </div>
+
+            <h2>Overview</h2>
+            <p>Automated double-pulse testing (DPT) tool for MOSFETs using LTspice, enabling efficient characterization and validation against manufacturer datasheet specifications.</p>
+
+            <h2>Key Features</h2>
+            <ul>
+                <li>Automated DPT setup and execution in LTSpice</li>
+                <li>Datasheet curve comparison and validation</li>
+                <li>Switching loss characterization</li>
+                <li>Automated report generation</li>
+            </ul>
+
+            <h2>Technical Details</h2>
+            <p>Add technical implementation details, methodologies used, and the testing framework.</p>
+
+            <h2>Results & Impact</h2>
+            <p>Add measurable results and how this tool improved the testing workflow.</p>
+
+            <h2>Project Images</h2>
+            <div class="project-images">
+                <div class="project-image-placeholder">Test Setup</div>
+                <div class="project-image-placeholder">Results Comparison</div>
+            </div>
+        </div>
+
+        <!-- SPIM Localization Project -->
+        <div id="spim-project" class="project-detail">
+            <button class="back-button" onclick="closeProject()">← Back to Projects</button>
+            
+            <h1>SPIM Manufacturing Localization</h1>
+            
+            <div class="project-meta">
+                <div class="project-meta-item">
+                    <strong>Organization</strong>
+                    <span>El-Araby Group</span>
+                </div>
+                <div class="project-meta-item">
+                    <strong>Duration</strong>
+                    <span>Jan 2020 - Jan 2024</span>
+                </div>
+                <div class="project-meta-item">
+                    <strong>Role</strong>
+                    <span>Project Lead</span>
+                </div>
+                <div class="project-meta-item">
+                    <strong>Team Size</strong>
+                    <span>Cross-functional team</span>
+                </div>
+            </div>
+
+            <h2>Overview</h2>
+            <p>Led a comprehensive cross-functional initiative to localize nine single-phase induction motors (SPIM), significantly reducing annual import costs while maintaining or improving performance standards.</p>
+
+            <h2>Key Achievements</h2>
+            <ul>
+                <li>Successfully localized 9 SPIM motors</li>
+                <li>Reduced import costs by up to 30%</li>
+                <li>Improved motor efficiency by up to 15%</li>
+                <li>Established local supply chain partnerships</li>
+                <li>Created comprehensive testing and validation protocols</li>
+            </ul>
+
+            <h2>Project Scope</h2>
+            <p>Detail the full scope of the project including design, prototyping, testing, supplier qualification, and production ramp-up.</p>
+
+            <h2>Challenges & Solutions</h2>
+            <p>Add details about the challenges faced during localization and the innovative solutions implemented.</p>
+
+            <h2>Impact</h2>
+            <p>Describe the business impact, cost savings, and strategic advantages gained from the localization effort.</p>
+
+            <h2>Project Images</h2>
+            <div class="project-images">
+                <div class="project-image-placeholder">Motor Design</div>
+                <div class="project-image-placeholder">Testing Setup</div>
+                <div class="project-image-placeholder">Performance Data</div>
+            </div>
+        </div>
+
+        <!-- Sample Project Template -->
+        <div id="sample-project" class="project-detail">
+            <button class="back-button" onclick="closeProject()">← Back to Projects</button>
+            
+            <h1>Project Title</h1>
+            
+            <div class="project-meta">
+                <div class="project-meta-item">
+                    <strong>Organization</strong>
+                    <span>Organization Name</span>
+                </div>
+                <div class="project-meta-item">
+                    <strong>Duration</strong>
+                    <span>Project duration</span>
+                </div>
+                <div class="project-meta-item">
+                    <strong>Role</strong>
+                    <span>Your role</span>
+                </div>
+                <div class="project-meta-item">
+                    <strong>Technologies</strong>
+                    <span>Tech stack</span>
+                </div>
+            </div>
+
+            <h2>Overview</h2>
+            <p>Comprehensive project description goes here. Explain what the project was about, what problem it solved, and why it was important.</p>
+
+            <h2>Key Features</h2>
+            <ul>
+                <li>Feature 1 description</li>
+                <li>Feature 2 description</li>
+                <li>Feature 3 description</li>
+            </ul>
+
+            <h2>Technical Implementation</h2>
+            <p>Describe the technical approach, architecture, and key design decisions.</p>
+
+            <h2>Results & Impact</h2>
+            <p>Quantifiable results and the overall impact of the project.</p>
+
+            <h2>Project Images</h2>
+            <div class="project-images">
+                <div class="project-image-placeholder">Add images here</div>
+                <div class="project-image-placeholder">Add images here</div>
+            </div>
+        </div>
     </div>
 
-    <div class="job">
-        <strong>Motor Design Engineer</strong>
-        <span class="date">Jan 2020 – Jan 2024</span>
-        <ul>
-            <li>Optimized 15+ SPIM motors, improving efficiency by up to 15% and reducing cost by 30%.</li>
-            <li>Automated 2D/3D ANSYS simulations using Python (PyAEDT), cutting setup time by 90%.</li>
-            <li>Designed and built an Epstein Frame Jig according to IEC 60404-2.</li>
-            <li>Localized 9 SPIM motors and supported alternative material qualification.</li>
-            <li>Performed benchmarking, reverse engineering, and motor testing using dynamometers.</li>
-        </ul>
-    </div>
-</section>
+    <script>
+        function showTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
 
-<section>
-    <h3>Education</h3>
+            // Remove active class from all nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
 
-    <div class="edu">
-        <strong>Master of Power Electronics Engineering</strong>
-        <span class="date">Oct 2022 – Present</span><br>
-        Cairo University, Egypt<br>
-        <em>Thesis:</em> EV SiC-Based Multilevel Inverter
-    </div>
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
 
-    <div class="edu">
-        <strong>Bachelor of Electric Machines & Power Systems</strong>
-        <span class="date">Sep 2014 – Jun 2019</span><br>
-        Minufiya University, Egypt
-    </div>
-</section>
+            // Add active class to clicked nav link
+            event.target.classList.add('active');
+        }
 
-<section>
-    <h3>Technical Skills</h3>
-    <ul>
-        <li><strong>Simulation:</strong> ANSYS Maxwell, Motor-CAD, JMAG, FEMM</li>
-        <li><strong>Programming:</strong> Python (PyAEDT, PyFEMM), MATLAB/Simulink</li>
-        <li><strong>Testing:</strong> Dynamometers, Power Analyzers, Oscilloscopes</li>
-    </ul>
-</section>
+        function openProject(projectId) {
+            // Hide main content
+            document.querySelector('.content').style.display = 'none';
+            
+            // Show project detail page
+            document.getElementById(projectId).style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
 
-<section>
-    <h3>Key Projects</h3>
-
-    <p>
-        <strong>LTSpiceHandler (Python / MATLAB)</strong><br>
-        Automated inverter topology optimization with PWM analysis and IEC 60747-8 compliant loss calculations.
-    </p>
-
-    <p>
-        <strong>DPTHandler (Python)</strong><br>
-        Automated double-pulse testing for MOSFETs in LTspice with datasheet comparison.
-    </p>
-
-    <p>
-        <strong>SPIM Manufacturing Localization</strong><br>
-        Led cross-functional localization of nine SPIM motors, significantly reducing annual import costs.
-    </p>
-</section>
-
-<footer>
-    <p>© Ahmed Elsayed Mohamed</p>
-</footer>
-
-</div>
+        function closeProject() {
+            // Hide all project details
+            const projectDetails = document.querySelectorAll('.project-detail');
+            projectDetails.forEach(detail => detail.style.display = 'none');
+            
+            // Show main content
+            document.querySelector('.content').style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+    </script>
 </body>
 </html>
